@@ -38,6 +38,14 @@ $("#run-search").on("click", function(event) {
       console.log(queryURL);
       // Log the resulting object
       console.log(response);
+      //Longitute and latitude variables
+      var cityLon = response.coord.lon;
+      var cityLat = response.coord.lat;
+
+      console.log("This is lon: " + cityLon);
+      console.log("This is lat: " + cityLat);
+
+      //Generate HTML elements
       $("#current-city").html("<h1>" + response.name + " </h1>");
       $("#temp").text("Temperature (F) " + response.main.temp);
       $("#humidity").text("Humidity: " + response.main.humidity);
