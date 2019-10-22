@@ -38,12 +38,27 @@ $("#run-search").on("click", function(event) {
       console.log(queryURL);
       // Log the resulting object
       console.log(response);
+      //URL query for UV Index
+      var uvIndexQueryURL =
+        "https://api.openweathermap.org/data/2.5/uvi?" +
+        cityLat +
+        "&" +
+        cityLon +
+        APIKey;
+
       //Longitute and latitude variables
-      var cityLon = response.coord.lon;
-      var cityLat = response.coord.lat;
+      var cityLon = "lon=" + response.coord.lon;
+      var cityLat = "lat=" + response.coord.lat;
 
       console.log("This is lon: " + cityLon);
       console.log("This is lat: " + cityLat);
+
+      $.ajax({
+        url: uvIndexQueryURL,
+        method: "GET"
+      }).then(function(UVresponse) {
+        console.log("this is UV response:" + UVresponse);
+      });
 
       //Generate HTML elements
       $("#current-city").html("<h1>" + response.name + " </h1>");
