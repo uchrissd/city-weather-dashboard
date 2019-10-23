@@ -1,10 +1,10 @@
 //Function to build the query URL's for the current weather API, UV index API and the 5-day forecast API
-function buildQueryURL() {
+function buildAPICall(userInput) {
   //Variable for API key
   var APIKey = "&APPID=8e6cd4b0a92515f9df6154e3e1a6497a";
 
   //Grab the user search input
-  var userInput = $("#city-search").val();
+
   var search = "q=" + userInput + "&units=imperial";
   var forecastSearch = "q=" + userInput + "&units=imperial";
 
@@ -145,5 +145,10 @@ function buildQueryURL() {
 //Run search on click
 $("#run-search").on("click", function(event) {
   event.preventDefault();
-  buildQueryURL();
+  var userInput = $("#city-search").val();
+  buildAPICall(userInput);
+  console.log(userInput);
+  //Add logic for local storage
 });
+
+//Create second click event for buttons
