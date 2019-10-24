@@ -1,7 +1,14 @@
+//Function for checking local storage
+
+var userSearchArray = localStorage.getItem("userInputStorage");
+userSearchArray = JSON.parse(userSearchArray) || [];
+
+console.log("this is storage" + userSearchArray);
+
 //Function to build the query URL's for the current weather API, UV index API and the 5-day forecast API
 function buildAPICall(userInput) {
   //Variable for API key
-  var APIKey = "&APPID=8e6cd4b0a92515f9df6154e3e1a6497a";
+  var APIKey = "8e6cd4b0a92515f9df6154e3e1a6497a";
 
   //Grab the user search input
 
@@ -11,12 +18,16 @@ function buildAPICall(userInput) {
   //Variable for query URL to access the city weather API
 
   var queryURL =
-    "https://api.openweathermap.org/data/2.5/weather?" + search + APIKey;
+    "https://api.openweathermap.org/data/2.5/weather?" +
+    search +
+    "&APPID=" +
+    APIKey;
 
   //Variable for the query URL to access the 5-day forecast by city API
   var fiveDayQueryURL =
     "https://api.openweathermap.org/data/2.5/forecast?" +
     forecastSearch +
+    "&APPID=" +
     APIKey;
 
   // Call the current city weather API
@@ -39,6 +50,7 @@ function buildAPICall(userInput) {
     //Variable for the UV index API call
     var uvIndexQueryURL =
       "http://api.openweathermap.org/data/2.5/uvi?" +
+      "&APPID=" +
       APIKey +
       "&" +
       cityLat +
@@ -147,8 +159,35 @@ $("#run-search").on("click", function(event) {
   event.preventDefault();
   var userInput = $("#city-search").val();
   buildAPICall(userInput);
-  console.log(userInput);
-  //Add logic for local storage
+  console.log("This is the user input:" + userInput);
+
+  userSearchArray.push(userInput);
+  localStorage.setItem("userInputStorage", JSON.stringify(userSearchArray));
+  console.log(userSearchArray);
 });
 
 //Create second click event for buttons
+function renderSearchHistory() {
+  console.log(userSearchArray);
+
+  for (var i = 0; i < userSearchArray.length; i++) {
+    var buttonArray = [];
+    buttonArray = userSearchArray[i];
+
+    console.log("this is button array: " + buttonArray);
+    // $("#search-list").empty();
+    var button = $("<button>");
+    button.addClass("search");
+    button.text(buttonArray);
+
+    $("#search-list").append(button);
+  }
+}
+renderSearchHistory();
+
+$("#search-list").on("click", function(event) {
+  event.preventDefault();
+  var searchHistory = $("#search-list").text();
+
+  console.log(searchHistory);
+});
