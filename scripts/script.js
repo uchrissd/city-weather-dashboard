@@ -171,8 +171,7 @@ function renderSearchHistory() {
   console.log(userSearchArray);
 
   for (var i = 0; i < userSearchArray.length; i++) {
-    var buttonArray = [];
-    buttonArray = userSearchArray[i];
+    var buttonArray = userSearchArray[i];
 
     console.log("this is button array: " + buttonArray);
     // $("#search-list").empty();
