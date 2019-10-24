@@ -24,18 +24,26 @@
       <div class="row">
         <div class="col-4">
           <div class="form-group">
-            <label for="search">Search Term:</label>
-            <input type="text" class="form-control" id="city-search" />
+            <form>
+              <label for="search">Search For Your City:</label>
+              <input
+                type="text"
+                class="form-control"
+                id="city-search"
+                placeholder="name or zip code"
+                required
+              />
+              <button
+                id="run-search"
+                class="btn btn-outline-success my-2 my-sm-0"
+                type="submit"
+              >
+                Search
+              </button>
+            </form>
           </div>
 
-          <button
-            id="run-search"
-            class="btn btn-outline-success my-2 my-sm-0"
-            type="submit"
-          >
-            Search
-          </button>
-          <div id="search-list"></div>
+          <div class="list-group" id="search-list"></div>
         </div>
 
         <div class="col-8">
