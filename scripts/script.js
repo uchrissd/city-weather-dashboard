@@ -24,12 +24,13 @@ $(".search").on("click", function(event) {
   console.log(searchHistory);
   buildAPICall(searchHistory);
 });
-
+//Check weather the search term passed by the user is valid for the API call
 function checkValidity(userInput) {
   if ((userInput === null) | (userInput === "")) {
     console.log("it's empty!");
     // add code to show user it's empty!!
   } else {
+    //Call the APIs
     buildAPICall(userInput);
     userSearchArray.push(userInput);
     localStorage.setItem("userInputStorage", JSON.stringify(userSearchArray));
@@ -41,7 +42,7 @@ function checkValidity(userInput) {
   }
 }
 
-//Create second click event for buttons
+//Second click event for buttons
 function renderSearchHistory() {
   console.log(userSearchArray);
 
@@ -58,10 +59,6 @@ function renderSearchHistory() {
 
 //Function to build the query URL's for the current weather API, UV index API and the 5-day forecast API
 function buildAPICall(userInput) {
-  //Variable for API key
-
-  //Grab the user search input
-
   try {
     var search = "q=" + userInput + "&units=imperial";
     var forecastSearch = "q=" + userInput + "&units=imperial";
@@ -130,16 +127,11 @@ function buildAPICall(userInput) {
       url: fiveDayQueryURL,
       method: "GET"
     })
-      // We store all of the retrieved data inside of an object called "response"
+      // Create object for API data
       .then(function(response) {
-        // Log the queryURL
-        console.log(queryURL);
-
-        // Log the resulting object
-        console.log(response);
-
         renderFiveDayForecast(response);
       });
+    //Return is user passes an error
   } catch (err) {
     return err;
   }
@@ -147,8 +139,6 @@ function buildAPICall(userInput) {
 
 //Function renders 5-day forecast
 function renderFiveDayForecast(response) {
-  //Variable to generate the img elements to hold the weather icons
-
   //Render the 5-Day Forecast title
   $("#five-day").html("<h2>" + "5-Day Forecast" + "</h2>");
   //Day 1 variables to set the HTML elements
