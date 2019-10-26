@@ -35,7 +35,7 @@ function checkValidity(userInput) {
     localStorage.setItem("userInputStorage", JSON.stringify(userSearchArray));
     console.log(userSearchArray);
     var newButton = $("<button>");
-    newButton.addClass("search");
+    newButton.addClass("search list-group-item list-group-item-action");
     newButton.text(userInput);
     $("#search-list").append(newButton);
   }
@@ -152,7 +152,7 @@ function renderFiveDayForecast(response) {
   //Render the 5-Day Forecast title
   $("#five-day").html("<h2>" + "5-Day Forecast" + "</h2>");
   //Day 1 variables to set the HTML elements
-  var dayOneDate = $("<h5>").html(response.list[3].dt_txt);
+  var dayOneDate = $("<h6>").html(response.list[3].dt_txt);
   var dayOneIconId = response.list[3].weather[0].icon;
   var dayOneIconImage = $("<img>").attr(
     "src",
@@ -166,8 +166,21 @@ function renderFiveDayForecast(response) {
   $("#day-one").empty();
   $("#day-one").append(dayOneDate, dayOneIconImage, dayOneTemp, dayOneHum);
 
+  //Render current day date and icon
+  var currentCityDate = $("<h5>").html(response.list[3].dt_txt);
+  var currentCityIcon = response.list[3].weather[0].icon;
+  var currentCityIconImage = $("<img>").attr(
+    "src",
+    "https://openweathermap.org/img/wn/" + currentCityIcon + "@2x.png"
+  );
+
+  $("#current-city-date").empty();
+  $("#current-city-date").append(currentCityDate);
+  $("#current-city-icon").empty();
+  $("#current-city-icon").append(currentCityIconImage);
+
   //Day 2 variables to set the HTML elements
-  var dayTwoDate = $("<h5>").html(response.list[11].dt_txt);
+  var dayTwoDate = $("<h6>").html(response.list[11].dt_txt);
   var dayTwoIconId = response.list[3].weather[0].icon;
   var dayTwoIconImage = $("<img>").attr(
     "src",
@@ -182,7 +195,7 @@ function renderFiveDayForecast(response) {
   $("#day-two").append(dayTwoDate, dayTwoIconImage, dayTwoTemp, dayTwoHum);
 
   //Create HTML elements for day 3
-  var dayThreeDate = $("<h5>").html(response.list[19].dt_txt);
+  var dayThreeDate = $("<h6>").html(response.list[19].dt_txt);
 
   var dayThreeIconId = response.list[19].weather[0].icon;
   var dayThreeIconImage = $("<img>").attr(
@@ -204,7 +217,7 @@ function renderFiveDayForecast(response) {
   );
 
   //Create HTML elements for day 4
-  var dayFourDate = $("<h5>").html(response.list[27].dt_txt);
+  var dayFourDate = $("<h6>").html(response.list[27].dt_txt);
   var dayFourIconId = response.list[3].weather[0].icon;
   var dayFourIconImage = $("<img>").attr(
     "src",
@@ -220,7 +233,7 @@ function renderFiveDayForecast(response) {
   $("#day-four").append(dayFourDate, dayFourIconImage, dayFourTemp, dayFourHum);
 
   //Create HTML elements for day 5
-  var dayFiveDate = $("<h5>").html(response.list[35].dt_txt);
+  var dayFiveDate = $("<h6>").html(response.list[35].dt_txt);
   var dayFiveIconId = response.list[3].weather[0].icon;
   var dayFiveIconImage = $("<img>").attr(
     "src",

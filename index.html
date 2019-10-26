@@ -22,44 +22,58 @@
     </header>
     <div class="container">
       <div class="row">
-        <div class="col-4">
+        <div class="col-4 bg-light">
           <div class="form-group">
             <form>
-              <label for="search">Search For Your City:</label>
-              <input
-                type="text"
-                class="form-control"
-                id="city-search"
-                placeholder="name or zip code"
-                required
-              />
-              <button
-                id="run-search"
-                class="btn btn-outline-success my-2 my-sm-0"
-                type="submit"
-              >
-                Search
-              </button>
+              <label for="search"><h3>Search for a city:</h3></label>
+              <div class="row">
+                <input
+                  type="text"
+                  class="form-control col-8"
+                  id="city-search"
+                  placeholder="name or zip code"
+                  required
+                />
+                <button
+                  id="run-search"
+                  class="col-4 btn btn-outline-success my-2 my-sm-0"
+                  type="submit"
+                >
+                  Search
+                </button>
+              </div>
             </form>
           </div>
 
           <div class="list-group" id="search-list"></div>
         </div>
 
-        <div class="col-8">
-          <div id="current-city"></div>
-          <div id="temp"></div>
-          <div id="humidity"></div>
-          <div id="wind-speed"></div>
-          <div id="uv-index"></div>
-          <div class="row">
-            <div class="col-8">
-              <div id="five-day"></div>
-              <div id="day-one"></div>
-              <div id="day-two"></div>
-              <div id="day-three"></div>
-              <div id="day-four"></div>
-              <div id="day-five"></div>
+        <div class="col-8 ">
+          <div class="border p-3 mt-2 mb-2">
+            <div id="current-city"></div>
+            <div id="current-city-date"></div>
+            <div id="current-city-icon"></div>
+            <div id="temp"></div>
+            <div id="humidity"></div>
+            <div id="wind-speed"></div>
+            <div id="uv-index"></div>
+          </div>
+          <div id="five-day"></div>
+          <div class="row p-3 mt-2 mb-2 ">
+            <div class="card col-2 bg-primary text-white d-flex " id="day-one">
+              <div class="card-body"></div>
+            </div>
+            <div class="card col-2 bg-primary text-white d-flex" id="day-two">
+              <div class="card-body"></div>
+            </div>
+            <div class="card col-2 bg-primary text-white d-flex" id="day-three">
+              <div class="card-body"></div>
+            </div>
+            <div class="card col-2 bg-primary text-white d-flex" id="day-four">
+              <div class="card-body"></div>
+            </div>
+            <div class="card col-2 bg-primary text-white d-flex" id="day-five">
+              <div class="card-body"></div>
             </div>
           </div>
         </div>
