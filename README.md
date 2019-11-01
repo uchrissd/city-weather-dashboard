@@ -52,4 +52,4 @@ function checkValidity(userInput) {
 
 **Installation**
 
-No installation necessary. Project is hosted here:
+No installation necessary. Project is hosted here: https://uchrissd.github.io/city-weather-dashboard/
